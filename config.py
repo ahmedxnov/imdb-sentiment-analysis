@@ -45,7 +45,7 @@ PATTERNS = [
     ("ampersand_to_and", re.compile(r"&(?![A-Za-z]+;)"), " and "),
     ("period_letter_space", re.compile(r"(?<=\w)\.(?=[A-Za-z])"), ". "),
   # ("split_letter_hyphens", re.compile(r"(?i)(?<=[a-z])[–—-](?=[a-z])")," "),
-    ("nonword_symbols", re.compile(r"[^\w\s.,!?…'\-]"), " "),
+    ("nonword_symbols", re.compile(r"[^A-Za-z0-9\s.,!?…'\-]"), " "),
     ("multi_space", re.compile(r"\s{2,}"), " ")
 ]
 
