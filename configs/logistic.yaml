@@ -1,0 +1,13 @@
+model:
+ name: LogisticRegression
+ params:
+  max_iter: 1000
+  solver: liblinear
+  C: 10
+
+TF_IDF:
+ params:
+  ngram_range: [1,4]
+  min_df: 4
+  max_df: 0.85
+  sublinear_tf: True
