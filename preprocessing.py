@@ -1,5 +1,5 @@
 from nltk.tokenize import word_tokenize
-from config import *
+from constants import *
 
 
 def clean_text(text: str) -> str:
