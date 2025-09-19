@@ -5,7 +5,7 @@ import yaml
 
 if __name__ == "__main__":
     print("Loading configuration...")
-    with open("configs/logistic.yaml") as f:
+    with open("configs/naive_bayes.yaml") as f:
         configs = yaml.safe_load(f)
     print("Configuration loaded.\n")
 
@@ -53,7 +53,8 @@ if __name__ == "__main__":
     print("Training model...")
     model.fit(X_train_tfidf, y_train)
     print("Model training complete.")
-    print("Iterations used:", model.n_iter_, '\n')
+    if(model_configs["name"] != "MultinomialNB"):
+        print("Iterations used:", model.n_iter_, '\n')
 
     print("Evaluating model...\n")
     val_accuracy = model.score(tfidf_vectorizer.transform(X_val), y_val)

@@ -1,11 +1,8 @@
 model:
- name: SVC
+ name: MultinomialNB
  params:
-  C: 10
-  kernel: rbf
-  gamma: scale
-  max_iter: 1000
-  probability: True
+  alpha: 1.0
+  fit_prior: True
 TF_IDF:
  params:
   ngram_range: [1,2]
