@@ -5,7 +5,7 @@ import yaml
 
 if __name__ == "__main__":
     print("Loading configuration...")
-    with open("configs/naive_bayes.yaml") as f:
+    with open("configs/logistic.yaml") as f:
         configs = yaml.safe_load(f)
     print("Configuration loaded.\n")
 
@@ -29,8 +29,8 @@ if __name__ == "__main__":
     y = prepare_labels(dataset["sentiment"])
     print("Labels prepared.\n")
 
-    print("Creating train/validation/test splits...")
-    X_train, X_val, X_test, y_train, y_val, y_test = create_splits(X, y)
+    print("Creating train/test splits...")
+    X_train, X_test, y_train, y_test = create_splits(X, y)
     print("Data splits created.\n")
 
     print("Building TF-IDF vectorizer...")
@@ -57,7 +57,5 @@ if __name__ == "__main__":
         print("Iterations used:", model.n_iter_, '\n')
 
     print("Evaluating model...\n")
-    val_accuracy = model.score(tfidf_vectorizer.transform(X_val), y_val)
     test_accuracy = model.score(X_test_tfidf, y_test)
-    print(f"Validation Accuracy: {val_accuracy*100:.2f}%")
     print(f"Test Accuracy: {test_accuracy*100:.2f}%")
