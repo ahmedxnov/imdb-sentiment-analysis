@@ -36,7 +36,6 @@ if tfidf_vectorizer is not None and model is not None:
     if st.button("Predict Sentiment"):
         if review.strip():
                 preprocessed_review = preprocess_text(review)
-                st.write(f"Preprocessed Review: {' '.join(preprocessed_review)}")
                 test_tf_idf = tfidf_vectorizer.transform([" ".join(preprocessed_review)])
                 
                 prediction = model.predict(test_tf_idf)
@@ -46,6 +45,9 @@ if tfidf_vectorizer is not None and model is not None:
                     st.success(f" **Positive Sentiment** (Confidence: {probability[1]:.2%})")
                 else:
                     st.error(f" **Negative Sentiment** (Confidence: {probability[0]:.2%})")
-                st.warning("NOTE: This model doesn’t handle sarcasm, nuance, or neutral reviews well.\n \n" "Please keep your reviews clear and direct for the best results.")
+                st.warning(
+    "NOTE: This model struggles with sarcasm, nuance, neutral reviews, or misspellings.\n\n"
+    "It also struggles with offensive or profane language.\n\n" 
+    "Please keep your reviews clear and direct for the best results.")
         else:
             st.warning("Please enter a movie review before predicting.")
