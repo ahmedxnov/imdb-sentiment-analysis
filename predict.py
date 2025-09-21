@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from preprocessing import preprocess_text
 import joblib
 import streamlit as st
