@@ -1,11 +1,1 @@
-model:
- name: MultinomialNB
- params:
-  alpha: 1.0
-  fit_prior: True
-TF_IDF:
- params:
-  ngram_range: [1,2]
-  min_df: 5
-  max_df: 0.85
-  sublinear_tf: True
+# to be implemented

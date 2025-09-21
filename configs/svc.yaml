@@ -1,14 +1,1 @@
-model:
- name: SVC
- params:
-  C: 10
-  kernel: rbf
-  gamma: scale
-  max_iter: 1000
-  probability: True
-TF_IDF:
- params:
-  ngram_range: [1,2]
-  min_df: 5
-  max_df: 0.85
-  sublinear_tf: True
+# to be implemented
