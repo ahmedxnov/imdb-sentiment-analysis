@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from model import build_model
 from data import load_raw_dataset, cpu_info, preprocess_dataset, join_tokens, prepare_labels, create_splits
 from vectorizers import build_vectorizer
@@ -5,10 +7,17 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 import yaml
 import joblib
 import os
+import argparse
 
-if __name__ == "__main__":
-    print("Loading configuration...")
-    with open("configs/logistic.yaml") as f:
+def main():
+    parser = argparse.ArgumentParser(description="Train sentiment analysis model")
+    parser.add_argument("--config", "-c", 
+                       default="configs/logistic.yaml",
+                       help="Path to configuration file (default: configs/logistic.yaml)")
+    args = parser.parse_args()
+    
+    print(f"Loading configuration from {args.config}...")
+    with open(args.config) as f:
         configs = yaml.safe_load(f)
     print("Configuration loaded.\n")
 
@@ -86,3 +95,6 @@ if __name__ == "__main__":
     print("Saving trained classifier model...")
     joblib.dump(model, f"models/{model_configs['name']}_classifier.joblib")
     print(f"Model saved as models/{model_configs['name']}_classifier.joblib")
+
+if __name__ == "__main__":
+    main()
