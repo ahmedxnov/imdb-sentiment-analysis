@@ -1,7 +1,10 @@
 from model import build_model
 from data import load_raw_dataset, cpu_info, preprocess_dataset, join_tokens, prepare_labels, create_splits
 from vectorizers import build_vectorizer
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 import yaml
+import joblib
+import os
 
 if __name__ == "__main__":
     print("Loading configuration...")
@@ -57,5 +60,29 @@ if __name__ == "__main__":
         print("Iterations used:", model.n_iter_, '\n')
 
     print("Evaluating model...\n")
-    test_accuracy = model.score(X_test_tfidf, y_test)
-    print(f"Test Accuracy: {test_accuracy*100:.2f}%")
+    y_predict = model.predict(X_test_tfidf)
+    test_accuracy = accuracy_score(y_predict, y_test)
+    
+    precision = precision_score(y_test, y_predict) 
+    recall = recall_score(y_test, y_predict)
+    f1 = f1_score(y_test, y_predict)
+    cm = confusion_matrix(y_test, y_predict)
+    
+    print(f"Precision: {precision:.4f}")
+    print(f"Recall:    {recall:.4f}")
+    print(f"F1 Score:  {f1:.4f}")
+    print("Confusion Matrix:\n", cm)
+    print(f"Test Accuracy: {test_accuracy*100:.2f}%\n")
+    
+    
+    
+    if not os.path.exists("models"):
+        os.mkdir("models")
+        
+    print("Saving fitted TF-IDF vectorizer...")
+    joblib.dump(tfidf_vectorizer, "models/tf_idf_vectorizer.joblib")
+    print("Vectorizer saved in /models as tf_idf_vectorizer.joblib")
+
+    print("Saving trained classifier model...")
+    joblib.dump(model, f"models/{model_configs['name']}_classifier.joblib")
+    print(f"Model saved as models/{model_configs['name']}_classifier.joblib")

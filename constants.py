@@ -51,14 +51,14 @@ PATTERNS = [
 
 NEGATORS = {"not","no","never","nor","without"}
 
-ARTIFACTS = {"ll", "ve", "re", "m", "d", "s", "t", "'m", "'ll", "'ve", "'re", "'s", "'t", "'d"}
+ARTIFACTS = {"ll", "ve", "re", "m", "d", "s", "t", "'ll", "'ve", "'re","'m", "'d", "'s", "'t"}
 
 AUXILIARIES = {
     "do","does","did",
     "have","has","had",
     "am","is","are","was","were","be","been","being",
     "can","could","may","might","must","shall","should","will","would",
-    "need","must","wo","sha","ca","ai"               
+    "need","wo","sha","ca","ai"               
 }
 
 PUNCTUATION = {".", "!", "?", "-", ","}
@@ -66,3 +66,4 @@ ABBREVIATIONS = {"p.", "s.", "etc.", "dr.", "mr.", "mrs.", "ms.", "prof.", "vs."
 PLACEHOLDERS = {"NUM", "URL", "EMAIL", "USER"}
 COMMON_WORDS = {"us", "one", "get", "make", "give", "put", "see", "know", "find"}
 BASE= set(stopwords.words("english"))
+STOPWORDS = (BASE - NEGATORS) | ARTIFACTS | AUXILIARIES | PUNCTUATION | ABBREVIATIONS | PLACEHOLDERS | COMMON_WORDS

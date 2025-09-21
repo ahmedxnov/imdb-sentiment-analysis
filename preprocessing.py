@@ -1,5 +1,5 @@
 from nltk.tokenize import word_tokenize
-from constants import *
+from constants import PATTERNS, STOPWORDS
 
 
 def clean_text(text: str) -> str:
@@ -25,7 +25,4 @@ def stopword_removal(tokens: list[str], stopwords: set[str]) -> list[str]:
 
 
 def preprocess_text(text: str) -> list[str]:
-    stopwords = (BASE - NEGATORS) | ARTIFACTS | AUXILIARIES | PUNCTUATION | ABBREVIATIONS | PLACEHOLDERS | COMMON_WORDS
-    return    stopword_removal(normalize_not(tokenize_text(clean_text(text.lower()))),stopwords)
-   
-  
+    return    stopword_removal(normalize_not(tokenize_text(clean_text(text.lower()))),STOPWORDS)
