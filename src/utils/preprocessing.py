@@ -1,9 +1,8 @@
 from nltk.tokenize import word_tokenize
-from constants import PATTERNS, STOPWORDS
-
+from .constants import PATTERNS, STOPWORDS
 
 def clean_text(text: str) -> str:
-    for name, pattern, repl in PATTERNS:
+    for _, pattern, repl in PATTERNS:
         text = pattern.sub(repl, text)
     return text.strip()
 
@@ -22,7 +21,6 @@ def stopword_removal(tokens: list[str], stopwords: set[str]) -> list[str]:
         if token not in stopwords:
             filtered_tokens.append(token)
     return filtered_tokens
-
 
 def preprocess_text(text: str) -> list[str]:
     return    stopword_removal(normalize_not(tokenize_text(clean_text(text.lower()))),STOPWORDS)

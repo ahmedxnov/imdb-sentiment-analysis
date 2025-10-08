@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from model import build_model
-from data import load_raw_dataset, cpu_info, preprocess_dataset, join_tokens, prepare_labels, create_splits
-from vectorizers import build_vectorizer
+from src.models.model import build_model
+from src.data.dataset_pipeline import load_raw_dataset, cpu_info, preprocess_dataset, join_tokens, prepare_labels, create_splits
+from src.models.vectorizer import build_vectorizer
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 import yaml
 import joblib
@@ -14,6 +14,8 @@ def main():
     parser.add_argument("--config", "-c", 
                        default="configs/logistic.yaml",
                        help="Path to configuration file (default: configs/logistic.yaml)")
+    parser.add_argument("--dataset", "-d", default="data/IMDB Dataset.csv", 
+                        help="Path to dataset CSV file (default: data/IMDB Dataset.csv)")
     args = parser.parse_args()
     
     print(f"Loading configuration from {args.config}...")
@@ -22,7 +24,7 @@ def main():
     print("Configuration loaded.\n")
 
     print("Loading raw dataset...")
-    dataset = load_raw_dataset("dataset/IMDB Dataset.csv")
+    dataset = load_raw_dataset(args.dataset)
     print("Dataset loaded.\n")
 
     print("Getting CPU info...")
@@ -82,8 +84,6 @@ def main():
     print(f"F1 Score:  {f1:.4f}")
     print("Confusion Matrix:\n", cm)
     print(f"Test Accuracy: {test_accuracy*100:.2f}%\n")
-    
-    
     
     if not os.path.exists("models"):
         os.mkdir("models")

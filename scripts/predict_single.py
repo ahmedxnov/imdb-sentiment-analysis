@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from preprocessing import preprocess_text
+from src.utils.preprocessing import preprocess_text
 import joblib
 
 # Load models

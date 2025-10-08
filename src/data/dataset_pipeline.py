@@ -2,9 +2,8 @@ import pandas as pd
 from multiprocessing import Pool
 import math
 from os import cpu_count
-from preprocessing import preprocess_text
+from src.utils.preprocessing import preprocess_text
 from sklearn.model_selection import train_test_split
-
 
 def load_raw_dataset(path: str) -> pd.DataFrame:
     return pd.read_csv(path)
@@ -29,10 +28,3 @@ def create_splits(X: pd.Series, y: pd.Series, test_size=0.2, random_state=42) ->
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state, stratify=y)
     return X_train, X_test, y_train, y_test
-
-
-
-
-
-
-

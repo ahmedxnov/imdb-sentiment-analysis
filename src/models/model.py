@@ -14,5 +14,3 @@ def build_model(name: str, **params):
         return RandomForestClassifier(**params)
     else:
         raise ValueError(f"Model '{name}' is not supported.")
-    
-    
