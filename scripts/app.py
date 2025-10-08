@@ -32,15 +32,12 @@ with st.sidebar:
     st.markdown("This app uses **Logistic Regression** with **TF-IDF** vectorization to classify movie reviews as positive or negative.")
     
     st.markdown("## 📊 Performance")
-    st.markdown("- **Accuracy:** 91.62%")
-    st.markdown("- **F1-Score:** 91.66%") 
-    st.markdown("- **Dataset:** 50,000 IMDb Reviews")
+    st.markdown("- **Accuracy:** 91.62%\n- **F1-Score:** 91.66%\n- **Dataset:** 50,000 IMDb Reviews ")
+
     
     st.markdown("## 🔧 Key Features")
-    st.markdown("- Advanced text preprocessing")
-    st.markdown("- Negation preservation")
-    st.markdown("- Custom stopword filtering")
-    st.markdown("- YAML-based configuration")
+    st.markdown("- Advanced text preprocessing\n- Negation preservation\n- Custom stopword filtering\n- YAML-based configuration")
+
     
     st.markdown("## 🔗 Links")
     st.markdown("[📂 GitHub Repository](https://github.com/ahmedxnov/imdb-sentiment-analysis)")
