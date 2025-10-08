@@ -21,11 +21,33 @@ def load_models():
 
 # Load models
 tfidf_vectorizer, model = load_models()
-st.info("📂 For more info about this project, visit: https://github.com/ahmedxnov/imdb-sentiment-analysis\n\n")
 
+st.set_page_config(page_title="IMDb Sentiment Analysis", page_icon="🎬", layout="wide")
 
-st.title("Movie Review Sentiment Analysis")
+st.title("🎬 Movie Review Sentiment Analysis")
 st.write("Enter a movie review to predict its sentiment (Positive or Negative)")
+
+with st.sidebar:
+    st.markdown("## 📋 About")
+    st.markdown("This app uses **Logistic Regression** with **TF-IDF** vectorization to classify movie reviews as positive or negative.")
+    
+    st.markdown("## 📊 Performance")
+    st.markdown("- **Accuracy:** 91.62%")
+    st.markdown("- **F1-Score:** 91.66%") 
+    st.markdown("- **Dataset:** 50,000 IMDb Reviews")
+    
+    st.markdown("## 🔧 Key Features")
+    st.markdown("- Advanced text preprocessing")
+    st.markdown("- Negation preservation")
+    st.markdown("- Custom stopword filtering")
+    st.markdown("- YAML-based configuration")
+    
+    st.markdown("## 🔗 Links")
+    st.markdown("[📂 GitHub Repository](https://github.com/ahmedxnov/imdb-sentiment-analysis)")
+    st.markdown("[📊 Kaggle Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)")
+    
+    st.markdown("---")
+    st.markdown("**Developer:** [Ahmad Khaled](https://www.linkedin.com/in/ahmad-khaled-hamed/)")
 
 
 
